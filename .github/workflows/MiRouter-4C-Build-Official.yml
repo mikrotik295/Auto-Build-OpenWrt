@@ -43,7 +43,7 @@ jobs:
 
     - name: Set Env
       run: |
-        set FORCE_UNSAFE_CONFIGURE=1
+        sudo set FORCE_UNSAFE_CONFIGURE=1
 
     - name: Initialization environment
       env:
