@@ -43,7 +43,6 @@ jobs:
 
     - name: Set Env
       env:
-        set FORCE_UNSAFE_CONFIGURE=1
         FORCE_UNSAFE_CONFIGURE: 1
 
     - name: Initialization environment
