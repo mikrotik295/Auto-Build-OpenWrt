@@ -23,7 +23,7 @@ env:
   REPO_URL: https://github.com/mikrotik295/openwrt/
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config_Mi4C
+  CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -53,7 +53,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-        set FORCE_UNSAFE_CONFIGURE=1
 
     - name: Clone source code
       working-directory: /workdir
