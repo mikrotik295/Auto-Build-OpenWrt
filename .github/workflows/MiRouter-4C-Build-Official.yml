@@ -41,6 +41,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
+    - name: All Kmod
+      config:
+        .config
+      run: |
+        sed -i -e '/^# CONFIG_PACKAGE_kmod-/d' .config
+        echo CONFIG_ALL_KMODS=y >> .config
+        make defconfig
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
