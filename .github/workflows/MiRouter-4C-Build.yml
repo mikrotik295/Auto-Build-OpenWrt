@@ -89,12 +89,17 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
+    - name: ALL KMOD
+      id: kmods
+      run: |
+        sed -i -e '/^# CONFIG_PACKAGE_kmod-/d' .config
+        echo CONFIG_ALL_KMODS=y >> .config
+        make defconfig
+
     - name: Download package
       id: package
       run: |
         cd openwrt
-        sed -i -e '/^# CONFIG_PACKAGE_kmod-/d' .config
-        echo CONFIG_ALL_KMODS=y >> .config
         make defconfig
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
